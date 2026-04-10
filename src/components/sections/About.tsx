@@ -1,10 +1,12 @@
 import React from "react";
-import { doctor } from "@/data/doctor";
+import { doctor, siteData } from "@/data/siteData";
 import { Section } from "@/components/ui/Section";
-import { ShieldCheck, GraduationCap, Star, ArrowRight } from "lucide-react";
+import { ShieldCheck, GraduationCap, Star, ArrowRight, User } from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
 
 export function About() {
+  const { badgeText, eyebrowText, verifiedSpecialistText, bookConsultationText, bookConsultationUrl } = siteData.about;
+
   return (
     <Section id="about" className="bg-cream relative overflow-hidden py-24">
       {/* Subtle background texture */}
@@ -21,11 +23,18 @@ export function About() {
               {/* Gold arc accent behind image */}
               <div className="absolute -inset-3 rounded-full bg-gradient-to-br from-gold/30 via-transparent to-transparent rotate-[-30deg] pointer-events-none z-0" />
 
-              <div className="w-72 h-72 md:w-[400px] md:h-[400px] rounded-full overflow-hidden shadow-2xl border-[10px] border-white group-hover:border-gold/30 transition-colors duration-700 relative z-10">
-                <div
-                  className="w-full h-full bg-cover bg-center transition-transform hover:scale-110 duration-1000"
-                  style={{ backgroundImage: `url('${doctor.photo}')` }}
-                />
+              <div className="w-72 h-72 md:w-[400px] md:h-[400px] rounded-full overflow-hidden shadow-2xl border-[10px] border-white bg-cream group-hover:border-gold/30 transition-colors duration-700 relative z-10 flex items-center justify-center">
+                {doctor.photo ? (
+                  <div
+                    className="w-full h-full bg-cover bg-center transition-transform hover:scale-110 duration-1000"
+                    style={{ backgroundImage: `url('${doctor.photo}')` }}
+                  />
+                ) : (
+                  <User 
+                    className="w-32 h-32 md:w-48 md:h-48 text-forest/20 transition-transform group-hover:scale-110 duration-700" 
+                    strokeWidth={1} 
+                  />
+                )}
               </div>
 
               {/* Decorative rings */}
@@ -39,7 +48,7 @@ export function About() {
                     <Star key={i} size={12} className="text-gold fill-gold" />
                   ))}
                 </div>
-                <span className="text-forest text-xs font-bold">Top Rated</span>
+                <span className="text-forest text-xs font-bold">{badgeText}</span>
               </div>
             </div>
           </FadeIn>
@@ -51,14 +60,14 @@ export function About() {
             <FadeIn direction="up">
               <div className="flex items-center justify-center lg:justify-start gap-3 mb-4">
                 <div className="h-px w-8 bg-gold" />
-                <p className="text-gold font-bold tracking-[0.2em] uppercase text-xs">Meet the Expert</p>
+                <p className="text-gold font-bold tracking-[0.2em] uppercase text-xs">{eyebrowText}</p>
               </div>
             </FadeIn>
 
             {/* Name — large, dominant */}
             <FadeIn direction="up" delay={0.05}>
               <h2 className="text-5xl md:text-6xl font-bold text-forest mb-6 tracking-tight leading-none">
-                Dr. Snigdha Hegde
+                {doctor.name}
               </h2>
             </FadeIn>
 
@@ -72,7 +81,7 @@ export function About() {
                 {doctor.memberships.length > 0 && (
                   <span className="bg-white/80 backdrop-blur-sm text-forest text-xs font-semibold px-4 py-2 rounded-full shadow-sm flex items-center gap-2 border border-black/5">
                     <ShieldCheck size={15} className="text-gold" />
-                    Verified Specialist
+                    {verifiedSpecialistText}
                   </span>
                 )}
               </div>
@@ -93,12 +102,12 @@ export function About() {
             {/* CTA */}
             <FadeIn direction="up" delay={0.3}>
               <a
-                href="https://fayumi.in/viewdoctor/skin-code"
+                href={bookConsultationUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-center gap-2.5 bg-forest text-white px-8 py-3.5 rounded-full font-bold hover:bg-gold hover:text-forest transition-all duration-300 shadow-lg hover:shadow-xl group"
               >
-                Book Consultation
+                {bookConsultationText}
                 <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-300" />
               </a>
             </FadeIn>

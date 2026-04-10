@@ -1,6 +1,6 @@
 ﻿"use client";
 import React, { useState } from "react";
-import { services } from "@/data/services";
+import { services, siteData } from "@/data/siteData";
 import { Section } from "@/components/ui/Section";
 import * as Icons from "lucide-react";
 import { FadeIn } from "@/components/ui/FadeIn";
@@ -8,6 +8,15 @@ import { ArrowUpRight } from "lucide-react";
 
 export function Services() {
   const [hovered, setHovered] = useState<number | null>(null);
+
+  const {
+    eyebrowText,
+    title,
+    subtitle,
+    consultNowText,
+    moreServicesTitle,
+    bookAppointmentText
+  } = siteData.servicesSection;
 
   // Group services into primary (first 4 for cards) and secondary (rest for a list or smaller cards)
   const primaryServices = services.slice(0, 4);
@@ -26,32 +35,32 @@ export function Services() {
           <FadeIn direction="right" className="max-w-2xl">
             <div className="flex items-center gap-3 mb-5">
               <div className="h-px w-10 bg-gold" />
-              <p className="text-gold font-bold tracking-[0.25em] uppercase text-sm">Specialty Treatments</p>
+              <p className="text-gold font-bold tracking-[0.25em] uppercase text-sm">{eyebrowText}</p>
             </div>
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-[#1A1A1A] leading-[1.1] tracking-tight">
-              Elevating your <span className="text-gold italic font-medium">natural</span> beauty.
+              {title.regular1}<span className="text-gold italic font-medium">{title.italic}</span>{title.regular2}
             </h2>
           </FadeIn>
           
           <FadeIn direction="left" delay={0.1} className="md:text-right max-w-sm">
             <p className="text-text-body text-base md:text-lg leading-relaxed mb-6 font-medium opacity-80">
-              We offer a versatile range of dermatological procedures to restore, enhance, and protect your skin and hair health.
+              {subtitle}
             </p>
           </FadeIn>
         </div>
 
         {/* Featured Service Grid */}
-        <div className="flex overflow-x-auto pb-4 -mx-4 px-4 md:grid md:grid-cols-2 gap-4 md:gap-6 lg:gap-8 mb-16 snap-x snap-mandatory">
+        <div className="grid grid-cols-2 md:grid-cols-2 gap-3 md:gap-6 lg:gap-8 mb-16">
           {primaryServices.map((service, index) => {
             const Icon = (Icons as unknown as Record<string, React.ElementType>)[service.icon] || Icons.Sparkles;
             const isHovered = hovered === service.id;
 
             return (
-              <FadeIn key={service.id} direction="up" delay={index * 0.1} className="flex min-w-[85%] sm:min-w-[45%] md:min-w-0 snap-center w-full">
+              <FadeIn key={service.id} direction="up" delay={index * 0.1}>
                 <div
                   onMouseEnter={() => setHovered(service.id)}
                   onMouseLeave={() => setHovered(null)}
-                  className="group relative bg-white rounded-2xl md:rounded-[2rem] p-6 sm:p-6 md:p-10 shadow-sm hover:shadow-2xl transition-all duration-500 border border-sage/40 overflow-hidden h-full flex flex-col w-full"
+                  className="group relative bg-white rounded-2xl md:rounded-[2rem] p-4 sm:p-6 md:p-10 shadow-sm hover:shadow-2xl transition-all duration-500 border border-sage/40 overflow-hidden h-full flex flex-col"
                 >
                   {/* Hover Background Expansion */}
                   <div className="absolute top-0 right-0 w-32 h-32 bg-gold/10 rounded-bl-[100%] transition-transform duration-500 origin-top-right group-hover:scale-[3] pointer-events-none" />
@@ -70,7 +79,7 @@ export function Services() {
                     </p>
 
                     <a href="#contact" className="inline-flex items-center gap-1 md:gap-2 text-[#1A1A1A] font-bold text-[10px] sm:text-xs md:text-sm tracking-wide uppercase hover:text-gold-hover transition-colors mt-auto">
-                      Consult Now
+                      {consultNowText}
                       <ArrowUpRight className={`w-3 h-3 md:w-4 md:h-4 transition-transform duration-300 ${isHovered ? "translate-x-1 -translate-y-1" : ""}`} />
                     </a>
                   </div>
@@ -84,12 +93,12 @@ export function Services() {
         <FadeIn direction="up" delay={0.4}>
           <div className="bg-white rounded-[2rem] p-8 md:p-12 shadow-sm border border-sage/40">
             <div className="flex flex-col md:flex-row md:items-center justify-between mb-10 gap-6">
-              <h3 className="text-2xl md:text-3xl font-bold text-[#1A1A1A]">More Clinical Services</h3>
+              <h3 className="text-2xl md:text-3xl font-bold text-[#1A1A1A]">{moreServicesTitle}</h3>
               <a
                 href="#contact"
                 className="inline-flex items-center justify-center bg-forest text-white px-8 py-3.5 rounded-full font-bold hover:bg-gold hover:text-[#1A1A1A] transition-all duration-300 shadow-md hover:shadow-lg w-fit"
               >
-                Book Appointment
+                {bookAppointmentText}
               </a>
             </div>
 

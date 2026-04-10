@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { doctor } from "@/data/doctor";
+import { doctor, hero } from "@/data/siteData";
 
 /* Phone icon */
 const PhoneIcon = () => (
@@ -27,12 +27,12 @@ const HeroNav = () => (
         Rx
       </span>
       <span className="text-cream font-bold hero-logo-text">
-        {doctor.hero?.logoText ?? doctor.name?.split(" ").slice(-1)[0] ?? "Skin Code"}
+        {hero?.logoText ?? doctor.name?.split(" ").slice(-1)[0] ?? "Skin Code"}
       </span>
     </a>
 
     <ul className="hidden md:flex items-center gap-8">
-      {doctor.hero?.nav.map((l) => (
+      {hero?.nav.map((l) => (
         <li key={l.label}>
           <a
             href={l.href}
@@ -58,14 +58,16 @@ const HeroNav = () => (
 );
 
 const HeroContent = ({ phone, waNumber }: { phone: string; waNumber: string }) => {
-  const { subtitle } = doctor.hero || { 
-    subtitle: "Board-certified Dermatologist in Mangaluru — advanced treatments for all skin types with warmth and precision." 
+  const { subtitle, title } = hero || { 
+    subtitle: "Board-certified Dermatologist in Mangaluru — advanced treatments for all skin types with warmth and precision.",
+    title: { regular1: "Expert ", italic1: "Skin Care", regular2: " for a ", italic2: "healthier", regular3: " you" }
   };
   
   return (
     <div className="relative z-10 flex flex-col items-center text-center px-6 md:px-12 pt-14 pb-0 flex-1">
       <h1 className="hero-fadeup text-cream leading-[1.07] tracking-tight mb-5 hero-main-title font-bold">
-        Skin Code
+        {title.regular1}
+       
       </h1>
 
       <p className="hero-fadeup hero-subtitle text-sage/80 max-w-lg text-base md:text-[1.08rem] leading-relaxed mb-10">
@@ -96,7 +98,7 @@ const HeroContent = ({ phone, waNumber }: { phone: string; waNumber: string }) =
 };
 
 const HeroMarquee = () => {
-  const images = doctor.hero?.images || [];
+  const images = hero?.images || [];
   const track = [...images, ...images];
   
   if (!images.length) return null;

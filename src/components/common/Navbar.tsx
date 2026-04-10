@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { Menu, X, Phone } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { doctor } from "@/data/doctor";
+import { doctor, siteData } from "@/data/siteData";
 
 export const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -18,12 +18,7 @@ export const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "#about" },
-    { name: "Services", href: "#services" },
-    { name: "Gallery", href: "#gallery" },
-  ];
+  const { navLinks, logoLabel, bookAppointmentUrl, bookAppointmentTextDesktop, bookAppointmentTextMobile } = siteData.navbar;
 
   return (
     <nav
@@ -40,7 +35,7 @@ export const Navbar = () => {
               {doctor.name}
             </span>
             <span className="hidden sm:inline-block bg-sage/20 text-sage text-[10px] lg:text-xs tracking-wider uppercase font-medium px-2 py-0.5 rounded-full border border-sage/30">
-              MBBS · MD
+              {logoLabel}
             </span>
           </Link>
 
@@ -56,13 +51,13 @@ export const Navbar = () => {
               </Link>
             ))}
             <a
-              href="https://fayumi.in/viewdoctor/skin-code"
+              href={bookAppointmentUrl}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-gold text-forest hover:bg-white hover:text-forest transition-colors px-6 py-2.5 rounded-full font-bold flex items-center gap-2 text-sm"
             >
               <Phone className="w-4 h-4" />
-              Book Appointment
+              {bookAppointmentTextDesktop}
             </a>
           </div>
 
@@ -98,14 +93,14 @@ export const Navbar = () => {
                 </Link>
               ))}
               <a
-                href="https://fayumi.in/viewdoctor/skin-code"
+                href={bookAppointmentUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-gold text-forest hover:bg-white transition-colors px-8 py-3 rounded-full font-bold flex items-center gap-2 mt-4"
                 onClick={() => setIsOpen(false)}
               >
                 <Phone className="w-5 h-5" />
-                Book Your Visit
+                {bookAppointmentTextMobile}
               </a>
             </div>
           </motion.div>

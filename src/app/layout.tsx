@@ -1,7 +1,7 @@
 ﻿import type { Metadata } from "next";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
-import { seo } from "@/data/seo";
+import { seo } from "@/data/siteData";
 import { Toaster } from "react-hot-toast";
 
 const dmSans = DM_Sans({

@@ -1,16 +1,12 @@
 ﻿"use client";
 
 import React from "react";
+import { siteData } from "@/data/siteData";
 import { Section } from "@/components/ui/Section";
 import { FadeIn } from "@/components/ui/FadeIn";
 
 export function Process() {
-  const steps = [
-    { num: "01", title: "Consultation", desc: "Detailed analysis of your skin and medical history." },
-    { num: "02", title: "Diagnosis", desc: "Accurate identification of your specific dermatological concerns." },
-    { num: "03", title: "Treatment", desc: "Customized procedures using state-of-the-art technology." },
-    { num: "04", title: "Follow-up", desc: "Continuous monitoring to ensure optimal results." },
-  ];
+  const { steps, title } = siteData.process;
 
   return (
     <Section id="process" className="bg-forest py-24 px-6 relative overflow-hidden dark-section">
@@ -20,7 +16,7 @@ export function Process() {
       <div className="container mx-auto px-4 relative z-10">
         <FadeIn direction="up">
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-10 md:mb-16 tracking-tight text-white drop-shadow-md">
-            Process that moves <span className="text-gold">things forward</span>
+            {title.regular}<span className="text-gold">{title.accent}</span>
           </h2>
         </FadeIn>
         

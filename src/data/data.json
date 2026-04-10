@@ -1,0 +1,156 @@
+{
+  "contact": {
+    "address": "string",
+    "phone": "string",
+    "email": "string",
+    "hours": "string",
+    "whatsapp": "string",
+    "mapsEmbed": "string"
+  },
+  "doctor": {
+    "name": "string",
+    "qualifications": "string",
+    "tagline": "string",
+    "experience": "string",
+    "patients": "string",
+    "phone": "string",
+    "specialties": [
+      "string"
+    ],
+    "bio": "string",
+    "affiliations": [
+      "string"
+    ],
+    "memberships": [
+      "string"
+    ],
+    "photo": "string"
+  },
+  "hero": {
+    "logoText": "string",
+    "nav": [
+      {
+        "label": "string",
+        "href": "string",
+        "active": "boolean"
+      }
+    ],
+    "title": {
+      "regular1": "string",
+      "italic1": "string",
+      "regular2": "string",
+      "italic2": "string",
+      "regular3": "string"
+    },
+    "subtitle": "string",
+    "images": [
+      {
+        "src": "string",
+        "alt": "string"
+      }
+    ]
+  },
+  "seo": {
+    "title": "string",
+    "description": "string",
+    "keywords": [
+      "string"
+    ]
+  },
+  "services": [
+    {
+      "id": "number",
+      "title": "string",
+      "icon": "string",
+      "description": "string"
+    }
+  ],
+  "gallery": [],
+  "siteData": {
+    "navbar": {
+      "logoLabel": "string",
+      "navLinks": [
+        {
+          "name": "string",
+          "href": "string"
+        }
+      ],
+      "bookAppointmentUrl": "string",
+      "bookAppointmentTextDesktop": "string",
+      "bookAppointmentTextMobile": "string"
+    },
+    "process": {
+      "title": {
+        "regular": "string",
+        "accent": "string"
+      },
+      "steps": [
+        {
+          "num": "string",
+          "title": "string",
+          "desc": "string"
+        }
+      ]
+    },
+    "about": {
+      "badgeText": "string",
+      "eyebrowText": "string",
+      "verifiedSpecialistText": "string",
+      "bookConsultationUrl": "string",
+      "bookConsultationText": "string"
+    },
+    "servicesSection": {
+      "eyebrowText": "string",
+      "title": {
+        "regular1": "string",
+        "italic": "string",
+        "regular2": "string"
+      },
+      "subtitle": "string",
+      "consultNowText": "string",
+      "moreServicesTitle": "string",
+      "bookAppointmentText": "string"
+    },
+    "contactSection": {
+      "title": "string",
+      "subtitle": "string",
+      "clinicDetailsTitle": "string",
+      "bookAppointmentTitle": "string",
+      "formLabels": {
+        "name": "string",
+        "phone": "string",
+        "date": "string",
+        "email": "string",
+        "concern": "string"
+      },
+      "formPlaceholders": {
+        "name": "string",
+        "phone": "string",
+        "email": "string",
+        "concern": "string"
+      },
+      "formMessages": {
+        "nameRequired": "string",
+        "phoneRequired": "string",
+        "dateRequired": "string",
+        "emailInvalid": "string",
+        "concernRequired": "string",
+        "submitButton": "string",
+        "submittingButton": "string",
+        "success": "string",
+        "errorFallback": "string"
+      }
+    },
+    "footer": {
+      "taglineParams": "string",
+      "quickLinksTitle": "string",
+      "connectTitle": "string",
+      "rightsReserved": "string",
+      "privacyText": "string",
+      "termsText": "string"
+    },
+    "whatsappButton": {
+      "messageTemplate": "string"
+    }
+  }
+}
